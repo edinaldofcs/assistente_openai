@@ -55,8 +55,4 @@ O objetivo é criar uma experiência interativa e dinâmica, combinando o poder 
 6. Obtenha a apiKey da openai:
 
 ## Exemplos de Uso
-
-<video width="600" controls>
-  <source src="public/videos/bank_gpt.mp4" type="video/mp4">
-  Seu navegador não suporta o elemento de vídeo.
-</video>
+https://github.com/user-attachments/assets/d8a8bb97-4801-435e-a53a-1bcfabbd41a9
