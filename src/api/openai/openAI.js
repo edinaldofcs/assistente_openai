@@ -30,18 +30,26 @@ export class OpenAIClient {
       run.required_action.submit_tool_outputs &&
       run.required_action.submit_tool_outputs.tool_calls
     ) {
-      let function_name = `${run.required_action.submit_tool_outputs.tool_calls[0].function.name}`;
+      let function_name = run.required_action.submit_tool_outputs.tool_calls.map(
+        (fn) => {
+          return fn.function.name;
+        }
+      )
       const functions = this.supabase.getFunctions();
-     
-      // console.log(this.client);
-      const obj = await functions.functions[function_name](Number(this.client.clienteid));
 
-      const toolOutputs = run.required_action.submit_tool_outputs.tool_calls.map((tool) => {
-        return {
-          tool_call_id: tool.id,
-          output: JSON.stringify(obj),
-        };
-      });
+      let output = []
+      for (const name of function_name) {
+        const obj = await functions.functions[name](Number(this.client.clienteid));
+        output.push(obj)
+      }
+      
+      const toolOutputs =
+        run.required_action.submit_tool_outputs.tool_calls.map((tool) => {
+          return {
+            tool_call_id: tool.id,
+            output: JSON.stringify(output),
+          };
+        });
 
       if (toolOutputs.length > 0) {
         run = await this.openai.beta.threads.runs.submitToolOutputsAndPoll(
@@ -60,9 +68,12 @@ export class OpenAIClient {
 
   handleRunStatus = async (run, thread) => {
     if (run.status === "completed") {
-      let messages = await this.openai.beta.threads.messages.list(run.thread_id, {
-        run_id: run.id,
-      });
+      let messages = await this.openai.beta.threads.messages.list(
+        run.thread_id,
+        {
+          run_id: run.id,
+        }
+      );
       const data = {
         message: messages.data[0].content[0].text.value,
       };
