@@ -1,0 +1,58 @@
+/* TypingIndicator.css */
+.typing-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    margin-top: 1rem;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #999;
+    border-radius: 50%;
+    animation: blink 1.4s infinite both;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  .cyberai{
+    width:fit-content;
+    background:none;
+  }
+
+  .cyberai {
+    animation: nameblink 1.4s infinite both;
+
+  }
+
+  @keyframes nameblink {
+    0%, 80% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 0;
+    }
+  }
+  
+  
+  @keyframes blink {
+    0%, 20%, 50%, 80%, 100% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 1;
+    }
+  }
+  

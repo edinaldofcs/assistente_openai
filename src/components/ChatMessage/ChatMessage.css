@@ -1,0 +1,62 @@
+.chat-message.chatgpt {
+  /* background-color: #444654; */
+  width: 90%;
+  margin: 0 auto;
+}
+
+.chat-message.user {
+  width: fit-content;
+  background-color: #2f2f2f;
+  margin-top: 0.5rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  align-self: end;
+  display: flex;
+}
+
+.chat-message-center {
+  width: 100%;
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  padding: 1.2rem;
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+  position: relative;
+}
+
+.message {
+  padding: 0 1rem;
+  width: 100%;
+  overflow-wrap: break-word;
+  /* background: #0da37f; */
+}
+
+.avatar {
+  background: #fff;
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+}
+
+.avatar-chatgpt {
+  /* background: #0da37f; */
+  /* border-radius: 50%; */
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  /* border: 1px solid #ccc; */
+  position: absolute;
+  top: 0.5rem;
+  left: -1rem;
+}
+
+.chat-message.chatgpt tr, .chat-message.chatgpt td {
+  border: 1px solid #ccc;
+}
+
+.chat-message.chatgpt td{
+  padding: .5rem .2rem;
+}
